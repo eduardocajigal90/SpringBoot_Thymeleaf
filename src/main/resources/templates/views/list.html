@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="views/layout :: head"></head>
+<body>
+
+	<header th:replace="views/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${title}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/form}" class="btn btn-primary">Create Product</a>
+				</h4>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Size</th>
+							<th>Color</th>
+							<th>Price</th>
+							<th>Lot</th>
+							<th>Quantity</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product: ${products}">
+							<td th:text="${product.id}"></td>
+							<td th:text="${product.name}"></td>
+							<td th:text="${product.size}"></td>
+							<td th:text="${product.color}"></td>
+							<td th:text="${product.price}"></td>
+							<td th:text="${product.lot}"></td>
+							<td th:text="${product.quantity}"></td>
+							<td><a class="btn btn-primary btn-xs" th:href="#" th:text="'Edit'"></a></td>
+							<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${product.id}" th:text="'Delete'" onclick="return confirm('Are you sure that you want delete?');"></a></td>
+						</tr>
+					</tbody>
+
+				</table>
+				<!--<nav th:replace="views/paginator-nav :: paginator"></nav>-->
+			</div>
+		</div>	
+	</div>
+	<footer th:replace="views/layout :: footer"></footer>
+</body>
+</html>

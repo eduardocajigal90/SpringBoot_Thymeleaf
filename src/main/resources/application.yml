@@ -1,0 +1,22 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost/inventario
+    username: postgres
+    password: postgres
+    test-on-borrow: true
+    validation-query: SELECT 1
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update  #validate/update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: false
+        globally_quoted_identifiers: false
+
+
